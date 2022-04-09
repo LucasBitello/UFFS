@@ -165,3 +165,38 @@ for e in range(epochs):
          
         EvolucaoError.append(loss)
         IndiceError.append(e)
+
+
+# Calcule a precisão dos dados de teste
+n_records, n_features = X_test.shape
+predictions=0
+
+for xi, yi in zip(X_test.values, y_test.values):
+
+# Forward Pass
+        #Camada oculta
+        #Calcule a combinação linear de entradas e pesos sinápticos
+        hidden_layer_input = np.dot(xi, weights_input_hidden)
+        #Aplicado a função de ativação
+        hidden_layer_output = sigmoid(hidden_layer_input)
+    
+        #Camada de Saída
+        #Calcule a combinação linear de entradas e pesos sinápticos
+        output_layer_in = np.dot(hidden_layer_output, weights_hidden_output)
+
+        #Aplicado a função de ativação 
+        output = sigmoid(output_layer_in)
+
+#-------------------------------------------    
+    
+#Cálculo do Erro da Predição
+        ## TODO: Cálculo do Erro        
+        if (output[0]>output[1]):
+            if (yi[0]>yi[1]):
+                predictions+=1
+                
+        if (output[1]>=output[0]):
+            if (yi[1]>yi[0]):
+                predictions+=1
+
+print("A Acurácia da Predição é de: {:.3f}".format(predictions/n_records))
