@@ -12,5 +12,9 @@ public class App {
         System.out.println("Cliente B solicitou alteração de nome: ");
         clienteB.setNameByConsole();
         clienteB.printVariaveis();
+
+        System.out.println("Big boss solicitou alteração do ID da Agencia A: ");
+        agenciaA.setId(10);
+        agenciaA.printVariaveis();
     }
 }
